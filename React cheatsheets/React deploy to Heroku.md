@@ -1,6 +1,6 @@
 # React deploy to Heroku
-
 ### ExpressJS server serving app
+- since Heroku can't host React app directly, you have to wrap it with Node.js application
 - in root of project repo, create file ```server.js```
 ```javascript
 //server.js
@@ -19,6 +19,7 @@ app.get('/ping', function (req, res) {
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+console.log("DEV: running on port " + port);
 app.listen(port);
 ```
 - note: /ping is a meaningless path just for testing whether the node server is up and running
@@ -32,10 +33,25 @@ path
 ```
 
 ### Configurate package.json script
-- change build actions: 
+- now, some changes in object "scripts" within package.json are necessary to be made - in the end, it should look like so: 
 ```json
-"start": "node server.js"
+"scripts": {
+  "prestart": "npm run build", // to build the app before "start"
+  "start": "node server.js",  // to run the app as if it was on production
+  "devrun": "react-scripts start", // to run the app in development mode
+  "build": "react-scripts build", // stays the same as before (builds only React app)
+  "test": "react-scripts test", // stays the same as before
+  "eject": "react-script eject" // stats the same as before
+}
 ```
+- now, use these scripts to run the app:
+  - ```npm run start``` 
+    - this will run the app as if it was on production
+    - head over to browser and find your page under localhost:{{port}}
+  - ```npm run devrun``` 
+    - this will run the app in development mode
+    - browser with your website will open automatically
+  - IMPORTANT!!! - pay attention on log in console - it will let you know on which port is the app running
 
 ### Prevent sourcecode from being deployed
 - in root of repository, create file ```.env``` and add following:
@@ -60,7 +76,7 @@ GENERATE_SOURCEMAP=false
     - ```heroku git:remote -a {{app_name}}``` add git remote for heroku repository
     - ```git push heroku master``` push code to heroku
 
-> ```heroku deploy``` to view website
+> Now, everything is done. You can execute ```heroku deploy``` in terminal to view the website
 
 ### Resources
 [Tutorial on Medium.com](https://medium.com/jeremy-gottfrieds-tech-blog/tutorial-how-to-deploy-a-production-react-app-to-heroku-c4831dfcfa08#:~:text=%20Tutorial%3A%20how%20to%20deploy%20a%20production%20React,to%20serve%20your%20production%20build%0AIn%20your...%20More%20)
