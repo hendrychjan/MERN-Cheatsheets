@@ -36,12 +36,12 @@ path
 - now, some changes in object "scripts" within package.json are necessary to be made - in the end, it should look like so: 
 ```json
 "scripts": {
-  "prestart": "npm run build", // to build the app before "start"
-  "start": "node server.js",  // to run the app as if it was on production
-  "devrun": "react-scripts start", // to run the app in development mode
-  "build": "react-scripts build", // stays the same as before (builds only React app)
-  "test": "react-scripts test", // stays the same as before
-  "eject": "react-script eject" // stats the same as before
+  "prestart": "npm run build",
+  "start": "node server.js", 
+  "devrun": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test",
+  "eject": "react-script eject"
 }
 ```
 - now, use these scripts to run the app:
