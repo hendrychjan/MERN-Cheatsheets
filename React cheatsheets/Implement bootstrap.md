@@ -17,4 +17,4 @@ import 'bootstrap/dist/js/bootstrap.bundle.min'; // JS part of bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';   // CSS part of bootstrap
 ```
 
-> Now, you can copy-paste code from Bootstrap.com as much as you want :smile:
+> Now, you can copy-paste code from [bootstrap](https://getbootstrap.com) as much as you want :smile:
