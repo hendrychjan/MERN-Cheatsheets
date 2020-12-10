@@ -52,4 +52,4 @@ function App() {
 ```
 - to understand the difference between Link and NavLink, head over [here](https://stackoverflow.com/questions/47338077/react-router-v4-navlink-vs-link-benefits)
 
-> This cheetsheat assumes you are already know at least basics of how routing in React works. If you dont have such knowladge, I recommend heading over to [here](https://medium.com/the-andela-way/understanding-the-fundamentals-of-routing-in-react-b29f806b157e), so you can  learning it. 
+> This cheatsheet assumes you already know at least basics of how routing in React works. If you dont have such knowledge, I recommend heading over to [here](https://medium.com/the-andela-way/understanding-the-fundamentals-of-routing-in-react-b29f806b157e), so you can learn it. 
