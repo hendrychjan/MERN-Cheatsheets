@@ -1,7 +1,6 @@
 # React deploy to Heroku
 
 ### ExpressJS server serving app
-- 
 - in root of project repo, create file ```server.js```
 ```javascript
 //server.js
