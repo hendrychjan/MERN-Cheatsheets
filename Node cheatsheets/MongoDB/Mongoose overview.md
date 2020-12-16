@@ -1,4 +1,4 @@
-# Connect to MongoDB
+# Mongoose overview
 
 ### Install dependencies
 ```npm i mongoose``` - required MongoDB package
@@ -28,6 +28,26 @@ const noteSchema = new mongoose.Schema({
     - Buffer (for stroing binary data)
     - Boolean
     - ObjectID
+    - Array
+    - []
+    - {}
+
+- supported Mongoose model properties are:
+    - type
+    - *validators:*
+        - required ```true/false/function```
+        - minlength ```<number>```
+        - maxlength ```<number>(```
+        - match ```/pattern/```
+        - enum ```[<array>]```
+        - validate ```{validator: function}```
+    - max ```<number>```
+    - min ```<number>```
+    - lowercase ```true/false```
+    - isAsync ```true/{not_set}```
+    - get ```get: v => Math.round(v);``` (custom getter)
+    - set ```set: v => Math.round(v);``` (custom setter)
+
 
 - mongoose schema acts like a blueprint for model
 - to create a model out of a schema:
