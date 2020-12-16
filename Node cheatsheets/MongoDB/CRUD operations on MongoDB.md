@@ -104,3 +104,43 @@ let notes = await Note.find({ isImportant: true })
   .limit(pageSize)
   .sort({ name: 1 });
 ```
+
+## Update
+- find > modify properties > save > return updated
+```js
+async function updateNote(id) {
+    let note = await Note.findById(id);
+    if (!note) return; // Return if note was not found
+
+    // Option 1:
+    note.isImportant = true;
+    note.name = "Programming ideas";
+
+    // Option 2:
+    note.set({
+        isImportant = true,
+        name: "Programming ideas"
+    });
+
+    let result = await note.save();
+    return result; // Return updated note
+}
+```
+
+## Remove
+- remove specific object
+```js
+async function removeNote(id) {
+    let res = await Note.deleteOne({ _id: id}); // Delete note
+    return res; // Return deleted note
+}
+```
+
+- remove objects by some key
+```js
+async function removeClosedNotes() {
+    // Delete all notes that are closed
+    let res = await Note.deleteMany({ isClosed: true });
+    
+    return res; // Return deleted notes
+}
