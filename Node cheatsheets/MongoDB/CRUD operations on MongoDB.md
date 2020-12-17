@@ -116,7 +116,7 @@ async function updateNote(id) {
     note.isImportant = true;
     note.name = "Programming ideas";
 
-    // Option 2:
+    // Option 2: --this option is obsolete - might not work for you
     note.set({
         isImportant = true,
         name: "Programming ideas"
