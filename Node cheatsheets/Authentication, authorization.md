@@ -11,7 +11,7 @@
 
 ### User model
 
-- first of all, you need to creat a `user` model:
+- first of all, you need to create a `user` model:
 
 ```js
 // Import dependencies
