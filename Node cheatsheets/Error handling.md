@@ -4,6 +4,7 @@
 
 - `express-async-errors`
 - `winston`
+- `winston-mongodb`
 
 ### Handling rejected promises
 
@@ -26,11 +27,17 @@ module.exports = function (err, req, res, next) {
 ```js
 // import dependencies
 require("express-async-errors");
+require("winston-mongodb");
 const winston = require('winston');
 
 // configure winston to log errors to "err.log" file
+// and optiobally to database 
+// (replace 'mongodb://localhost/myproject)' with connection string to your database
 winston.configure({
-  transports: [new winston.transports.File({ filename: "err.log" })],
+  transports: [
+    new winston.transports.File({ filename: "err.log" }),
+    new winston.transports.MongoDB({db: 'mongodb://localhost/myproject'})
+],
 });
 
 // import custom middleware error handler, that you created earlier
