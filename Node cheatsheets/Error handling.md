@@ -31,13 +31,26 @@ require("winston-mongodb");
 const winston = require('winston');
 
 // configure winston to log errors to "err.log" file
-// and optiobally to database 
+// and optionally to database 
 // (replace 'mongodb://localhost/myproject)' with connection string to your database
 winston.configure({
   transports: [
+    new winston.transports.Console({ colorize: true, prettyPrint: true }),
     new winston.transports.File({ filename: "err.log" }),
     new winston.transports.MongoDB({db: 'mongodb://localhost/myproject'})
 ],
+});
+
+// Handle all uncaught exceptions that happen outside express
+process.on("uncaughtException", (ex) => {
+  winston.error(ex.message, ex);
+  process.exit(1);
+});
+
+// Handle all unhandled rejections (promises) that happen outside express
+process.on("unhandledRejection", (ex) => {
+  winston.error(ex.message, ex);
+  process.exit(1);
 });
 
 // import custom middleware error handler, that you created earlier
